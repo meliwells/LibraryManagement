@@ -35,22 +35,39 @@ public class Controller {
             option = view.displayMenuOption();
             switch (option) {
                 case FIND_BOOKS_BY_CATEGORY:
-                    displayAllBooks();
+                    displayBooksByCategory();
                     break;
                 case ADD_A_BOOK:
                     addABook();
+                    break;
+                case UPDATE_A_BOOK:
+                    updateABook();
+                    break;
+                case REMOVE_A_BOOK:
+                    removeABook();
                     break;
             }
         } while (option != MenuOption.EXIT);
     }
 
-    public void displayAllBooks() throws DataAccessException {
+    public void displayBooksByCategory() throws DataAccessException {
         List<Book> books = service.findAll();
-        view.printAllBooks(books);
+        view.displayAllCategories()
+
     }
 
     public void addABook() throws DataAccessException {
-        List<Book> books = service.findAll();
+        Book book = view.addNewBook();
+        BookResult result = service,add(book);
+        view.printResult(result);
+    }
+
+    public void updateABook() throws DataAccessException {
+
+    }
+
+    public void removeABook() throws DataAccessException {
+
     }
 }
 

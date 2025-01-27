@@ -1,5 +1,8 @@
 package learn.library.ui;
 
+import learn.library.data.model.Book;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class View {
@@ -25,6 +28,8 @@ public class View {
         System.out.println(message);
         System.out.println("=".repeat(message.length()));
     }
+
+
 
     private String readString(String message) {
         System.out.print(message);
