@@ -5,6 +5,6 @@ public enum Category {
     MYSTERY,
     SCI_FI,
     ROMANCE,
-    WESTERN,
+    WESTERN
 
 }
