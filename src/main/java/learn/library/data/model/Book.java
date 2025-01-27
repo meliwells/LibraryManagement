@@ -8,6 +8,9 @@ public class Book {
     public String author;
     public String isbn;
 
+    public Book() {
+    }
+
     public Book(String category, int shelfNumber, int shelfPosition, int yearPublished, String author, String isbn) {
         this.category = category;
         this.shelfNumber = shelfNumber;

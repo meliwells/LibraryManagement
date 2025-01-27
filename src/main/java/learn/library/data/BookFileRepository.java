@@ -17,23 +17,12 @@ public class BookFileRepository implements BookRepository{
     public BookFileRepository(String filePath) {this.filePath = filePath;}
 
     @Override
-    public List<Book> findByCategory(Category category) throws DataAccessException {
-        ArrayList<Book> result = new ArrayList<>();
-        for (Book book : findAll()) {
-            if (book.getCategory() == book.category) {
-                result.add(book);
-            }
-        }
-        return result;
-    }
-
-    @Override
     public List<Book> findAll() throws DataAccessException {
         ArrayList<Book> result = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             reader.readLine();
             for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-                Book book = deserialize(line);
+                Book book = lineToBook(line);
                 if (book != null) {
                     result.add(book);
                 }
@@ -47,21 +36,40 @@ public class BookFileRepository implements BookRepository{
         return result;
     }
 
+    @Override
+    public List<Book> findByCategory(String category) throws DataAccessException {
+        ArrayList<Book> result = new ArrayList<>();
+        for (Book book : findAll()) {
+            if (book.getCategory() == category) {
+                result.add(book);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public
+
     private Book lineToBook(String line) {
-        String[] fields = line.split(DELIMITER);
+        String[] fields = line.split(DELIMITER, -1);
         if (fields.length != 6) {
             return null;
         }
         return new Book(
-                Integer.parseInt(fields[0]),
-                fields[1],
-                fields[2],
-                fields[3],
-                fields[4],
-                "true".equals(fields[5])
-        );
+            fields[0],
+            Integer.parseInt(fields[1]),
+            Integer.parseInt(fields[2]),
+            Integer.parseInt(fields[3]),
+            fields[4],
+            fields[5]);
     }
 
+
+    //        this.shelfNumber = shelfNumber;
+    //        this.shelfPosition = shelfPosition;
+    //        this.yearPublished = yearPublished;
+    //        this.author = author;
+    //        this.isbn = isbn;
 
 }
 

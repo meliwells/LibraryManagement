@@ -1,5 +1,7 @@
 package learn.library.data;
 
-public interface BookRepository {
+import java.util.List;
 
+public interface BookRepository {
+    List<Book> findAll() throws DataAccessException;
 }
