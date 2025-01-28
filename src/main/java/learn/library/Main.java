@@ -16,9 +16,25 @@ public class Main {
         //confirm
         System.out.println("You pressed number " + choice);
 
-
-
         //switch to print selection and add commented out method name
+        switch(choice) {
+            case 0:
+                System.out.println("Goodbye!");
+                break;
+            case 1:
+                System.out.println("Find Books by Category");
+                System.out.println("=======================");
+                break;
+            case 2:
+                System.out.println("Add a Book");
+                break;
+            case 3:
+                System.out.println("Update a Book");
+                break;
+            case 4:
+                System.out.println("Remove a Book");
+                break;
+        }
 
         //when this works, move to a while loop in the run method
 

@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class View {
 
     Scanner console = new Scanner(System.in);
-    boolean isRunning = true;
 
 //    private static final int CHOICE_EXIT = 0;
 //    private static final int CHOICE_FIND_BOOKS_BY_CATEGORY = 1;
@@ -52,6 +51,7 @@ public class View {
             System.out.println("2. Add a Book");
             System.out.println("3. Update a Book");
             System.out.println("4. Remove a Book");
+        System.out.println("Select [0-4]:");
     }
 
 
