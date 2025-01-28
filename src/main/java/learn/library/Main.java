@@ -1,10 +1,36 @@
 package learn.library;
 
-import learn.library.data.BookFileRepository;
+//import learn.library.data.BookFileRepository;
+import learn.library.ui.Controller;
+import learn.library.ui.View;
 
 public class Main {
     public static void main(String[] args) {
-        BookFileRepository repository = new BookFileRepository("");
+        Controller controller = new Controller();
+        View view = new View();
+
+        view.printMainMenu();
+
+        //get int from user
+        int choice = view.getInteger("Enter a number: ");
+        //confirm
+        System.out.println("You pressed number " + choice);
+
+
+
+        //switch to print selection and add commented out method name
+
+        //when this works, move to a while loop in the run method
+
+//
+//
+//
+//        switch(choice) {
+//            view.displayMessage()
+//        }
+
+        //BookFileRepository repository = new BookFileRepository("");
+
         /*
         /library
             /data
@@ -25,6 +51,7 @@ public class Main {
             /ui
                 *View.java  -handles all input and output operations
                 *Controller.java  -runs application, manages operations
+                //print starting menu
 
 
             Main.java initialize ui     

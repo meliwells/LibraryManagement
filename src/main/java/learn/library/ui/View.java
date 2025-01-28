@@ -7,71 +7,52 @@ import java.util.Scanner;
 
 public class View {
 
-    private Scanner console = new Scanner(System.in);
+    Scanner console = new Scanner(System.in);
+    boolean isRunning = true;
 
-    public MenuOption displayMenuOption() {
-        printHeader("Main Menu");
-        System.out.println("=========");
+//    private static final int CHOICE_EXIT = 0;
+//    private static final int CHOICE_FIND_BOOKS_BY_CATEGORY = 1;
+//    private static final int CHOICE_ADD_A_BOOK = 2;
+//    private static final int CHOICE_UPDATE_A_BOOK = 3;
+//    private static final int CHOICE_REMOVE_A_BOOK = 4;
+//
+//    public void selectChoice() {
+//       int choice = scanner.nextInt();
+//       switch (choice) {
+//           case CHOICE_EXIT:
+//               System.out.println("0. Exit");
+//               break;
+//           case CHOICE_FIND_BOOKS_BY_CATEGORY:
+//               System.out.println(" 1. Find Books by Category");
+//               break;
+//       }
+//
+//
+//
+//            System.out.println(" 2. Add a Book");
+//            System.out.println(" 3. Update a Book");
+//            System.out.println("4. Remove a Book");
+//            System.out.println("Select [0-4]:");
+//            selectChoice();
+//
+//    }
 
-        MenuOption[] options = MenuOption.values();
-        for (int i = 0; i < options.length; i++) {
-            System.out.printf("%s. %s%n", i + 1, options[i].getMessage());
-        }
-
-        String msg = String.format("Select [%s-%s]:", 1, options.length);
-        int value = readInt(msg, 1, options.length);
-        return options[value - 1];
+    public int getInteger(String prompt) {
+        System.out.println(prompt);
+        return console.nextInt();
     }
 
-    public void printHeader(String message) {
-        System.out.println();
-        System.out.println(message);
-        System.out.println("=".repeat(message.length()));
+    public void printMainMenu() {
+            System.out.println("Welcome to the Library Management System\n");
+            System.out.println("============================================\n");
+            System.out.println("Main Menu");
+            System.out.println("=======\n");
+            System.out.println("0. Exit");
+            System.out.println("1. Find Books by Category");
+            System.out.println("2. Add a Book");
+            System.out.println("3. Update a Book");
+            System.out.println("4. Remove a Book");
     }
 
 
-
-    private String readString(String message) {
-        System.out.print(message);
-        return console.nextLine();
-    }
-
-    private String readRequiredString(String message) {
-        String result;
-        do {
-            result = readString(message);
-            if (result.trim().length() == 0) {
-                System.out.println("Value is required.");
-            }
-        } while (result.trim().length() == 0);
-        return result;
-    }
-
-    private int readInt(String message) {
-        String input = null;
-        int result = 0;
-        boolean isValid = false;
-        do {
-            try {
-                input = readRequiredString(message);
-                result = Integer.parseInt(input);
-                isValid = true;
-            } catch (NumberFormatException ex) {
-                System.out.printf("%s is not a valid number.%n", input);
-            }
-        } while (!isValid);
-
-        return result;
-    }
-
-    private int readInt(String message, int min, int max) {
-        int result;
-        do {
-            result = readInt(message);
-            if (result < min || result > max) {
-                System.out.printf("Value must be between %s and %s.%n", min, max);
-            }
-        } while (result < min || result > max);
-        return result;
-    }
 }

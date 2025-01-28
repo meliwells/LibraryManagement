@@ -5,35 +5,35 @@ import learn.library.data.model.Book;
 import learn.library.domain.BookService;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class Controller {
 
-    private final BookService service;
-    private final View view;
+    //private final BookService service;
+    //private final View view;
 
-    public Controller(BookService service, View view) {
+    /*public Controller(BookService service, View view) {
         this.service = service;
         this.view = view;
+    }*/
+
+    public Controller() {
     }
 
-    public void run() {
-        view.printHeader("Welcome to the Library Management System!");
-        System.out.println("===========================================");
+//run() - pull over from main.java when working
 
-        try {
-            runMenuLoop();
-        } catch (DataAccessException ex) {
-            view.printHeader("CRITICAL ERROR:" + ex.getMessage());
-        }
 
-        view.printHeader("Goodbye");
-    }
+    /*public void printMainMenu() throws DataAccessException {
+        view.displayMessage("------Main Menu------");
+        System.out.println("0. Exit");
+        System.out.println("1. Find By Category");
+    }*/
 
-    private void runMenuLoop() throws DataAccessException {
-        MenuOption option;
-        do {
-            option = view.displayMenuOption();
-            switch (option) {
+
+
+    /*private void selectChoice() throws DataAccessException {
+        int choice = scanner.nextInt();
+            switch (choice) {
                 case FIND_BOOKS_BY_CATEGORY:
                     displayBooksByCategory();
                     break;
@@ -48,11 +48,15 @@ public class Controller {
                     break;
             }
         } while (option != MenuOption.EXIT);
-    }
+    }*/
 
+
+
+
+    /*
     public void displayBooksByCategory() throws DataAccessException {
         List<Book> books = service.findAll();
-        view.displayAllCategories()
+        view.displayAllCategories(books);
 
     }
 
@@ -68,7 +72,7 @@ public class Controller {
 
     public void removeABook() throws DataAccessException {
 
-    }
+    } */
 }
 
 
